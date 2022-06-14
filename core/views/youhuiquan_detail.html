@@ -1,0 +1,78 @@
+<%
+var youhuiquan = youhuiquan;
+var user_youhuiquan = user_youhuiquan;
+
+var gzh = req.param('gzh')
+%>
+
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel='stylesheet' href='/public/bower_components/bootstrap/dist/css/bootstrap.min.css'/>
+    <link rel='stylesheet' href='/public/stylesheets/style.css'/>
+    <title>我的卡券中心</title>
+
+</head>
+<body>
+<div class="container-fluid" style="">
+    <div class="row">
+        <div class="col-xs-12 youhuiquan_template_<%=youhuiquan.type%>" style="word-wrap: break-word; padding: 10px; ">
+            <div class="youhuiquan_detail_bg detail_bg" style="padding: 0 5px 0 5px">
+                <div class="youhuiquan_detail_title">
+                    <!--<div class="youhuiquan_type_icon type_icon"></div>-->
+                    <div class="youhuiquan_title"><%=youhuiquan.title%></div>
+
+                </div><div style="clear: both"></div>
+                <div class="youhuiquan_detail_expires" style="text-align: left; color: #fff; opacity: 0.6">有效期：<%=youhuiquan.starttime_ymd_str%>至<%=youhuiquan.endtime_ymd_str%></div>
+            </div>
+            <div class="youhuiquan_detail_foot">
+                <%=user_youhuiquan.logicnumber%>
+            </div>
+        </div>
+        <div class="col-xs-12" style="padding: 10px;">
+            <div style="height: 35px; line-height: 35px; padding-left: 10px; background: #cccccc">使用须知</div>
+            <div class="shiyonxuzhi"><%=youhuiquan.content%></div>
+        </div>
+
+    </div>
+</div>
+
+
+<div class="modal fade" id="qrcodeModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
+     style="">
+    <div class="modal-dialog" style="text-align: center">
+        <div class="modal-content" id="modal-content" style="padding:10px 0px;background:#fff;text-align: center">
+            <div id="qrcodeAreaTitle"></div>
+            <div id="qrcodeArea"></div>
+            <div id="qrcodeAreaBt"></div>
+        </div>
+    </div>
+</div>
+<% include ./include/scripts.html %>
+<script src="/public/bower_components/qrcode/jquery.qrcode.js"></script>
+<script src="/public/bower_components/qrcode/qrcode.js"></script>
+<script>iae.common.form('loginForm').validate();
+$('#qrcodeModal').on('hidden.bs.modal', function (e) {
+    $('#qrcodeAreaTitle').html('')
+    $('#qrcodeArea').html('')
+    $('#qrcodeAreaBt').html('')
+})
+function genQrcode(bh) {
+    $("#qrcodeModal").modal();
+    $('#qrcodeAreaTitle').html("<div style='font-size: 22px; color: red'>收银员扫码</div>");
+    $('#qrcodeAreaBt').html("<div style='font-size: 22px; color: #ccc'>" + bh + "</div>");
+    $('#qrcodeArea').qrcode({
+        //render  : "table",
+        width: '180',
+        height: '180',
+        text: "http://115.28.22.78/hexiao?gzh=<%=gzh%>&bh=" + bh
+    })
+}
+
+</script>
+
+</body>
+
+</html>

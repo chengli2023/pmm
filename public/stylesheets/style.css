@@ -1,0 +1,97 @@
+html, body {
+  font-size: 16px;
+  margin: 0;
+  padding: 0 0px;
+  font-family: "Arial", "Microsoft YaHei", "黑体", "宋体", sans-serif;
+  background: #fff;
+}
+a {
+  color: #00B7FF;
+}
+.formErrorMessage{ font-size:12px;color: #ffaf40; font-weight: 100; padding: 0px; margin: 0px; padding-top: 3px;}
+.res_error{color: red}
+div.row>div{padding:5px;}
+.boss_foot{position: fixed; bottom: 0px; height: 36px;box-shadow: 0px -1px 2px #3f7cbb; background: #336699; width: 100%; z-index: 1010}
+.boss_foot_inner{width: 18px; height: 18px; margin: auto; -webkit-border-radius: 50px 50px; margin-top: 8px;
+  -moz-border-radius: 50px 50px;
+  border-radius: 50px 50px; border: 1px solid #fff}
+
+
+
+/*.yhqcontentbox_red{position: relative; border:1px solid #ccc;border-radius: 5px 5px 0 0; background: #e55636; padding: 5px;}
+.yhqcontentbox_zi{position: relative; border:1px solid #ccc;border-radius: 5px 5px 0 0; background: #9157cf; padding: 5px;}
+.yhqcontentbox_green{position: relative; border:1px solid #ccc;border-radius: 5px 5px 0 0; background: #32b72a; padding: 5px;}
+.yhqcontentbox_blue{position: relative; border:1px solid #ccc;border-radius: 5px 5px 0 0; background: #e1a249; padding: 5px;}
+.youhuiquan_title{font-size:14px;font-family: "Arial","宋体","黑体","Microsoft YaHei", sans-serif;line-height: 20px; color: #fff}
+.yhqwuyan{position:absolute;height: 5px; left:0; width: 100%;background:url(/public/images/wuyan.png);
+  bottom: -1px;}
+.yhqbt{color: #949494;border-left: 1px solid #ccc;border-bottom: 1px solid #ccc;border-right: 1px solid #ccc;border-radius: 0 0 5px 5px ; background: #fff; padding: 5px; font-size: 14px;}
+.yhqbox{box-shadow: #ccc 2px 1px 5px}
+.yhqcontent{ color:#fff;margin-top: 6px; font-size: 12px;font-family: "宋体","黑体","Arial","Microsoft YaHei", sans-serif;}
+
+.yhqtype_hui{position:absolute; top:-14px; left:25px; z-index:1001;width: 40px; height: 20px;background:url(/public/images/hui.jpg)}
+.yhqtype_zhe{position:absolute; top:-14px; left:25px; z-index:1001;width: 40px; height: 20px;background:url(/public/images/zhe.jpg)}
+.yhqtype_song{position:absolute; top:-14px; left:25px; z-index:1001;width: 40px; height: 20px;background:url(/public/images/song.jpg)}
+.yhqtype_jing{position:absolute; top:-14px; left:25px; z-index:1001;width: 40px; height: 20px;background:url(/public/images/jing.jpg)}*/
+
+
+
+.youhuiquan{ height: 132px; margin-bottom: 5px; width: 96%; margin: auto}
+
+.youhuiquan_detail_foot{ height:60px; background: #ffffff; font-size: 35px; color: #6c6c6c; text-align: center;
+line-height: 60px;}
+.youhuiquan_detail_title{ height: 80px;}
+.youhuiquan_detail_expires{height: 20px; font-size: 14px; text-align: left; position: relative; top: -5px;}
+
+.youhuiquan_title_bar{height: 92px;display:table;  }
+.youhuiquan_title{font-weight:bolder;height: 92px;line-height: 28px; font-size: 24px; padding-right: 10px; display: table-cell; color: #ffffff; vertical-align: middle; overflow: hidden}
+.youhuiquan_type_icon{height: 92px; margin-right: 10px; width:53px; float: left}
+.youhuiquan_foot{ position: relative; height: 38px; line-height: 40px; color: #6c6c6c; width: 100%}
+.youhuiquan_left{ float:left;width:7px; height:132px;}
+.youhuiquan_right{float:right;width:7px; height:132px;}
+.youhuiquan_detail_bg{ height: 120px; width: 100%;}
+.youhuiquan_bg{width:100%; height:132px; }
+
+.youhuiquan_template_hui{}
+.youhuiquan_template_hui .left{ background:url(/public/images/yhqmb/hui/left.png)}
+.youhuiquan_template_hui .right{background:url(/public/images/yhqmb/hui/right.png)}
+.youhuiquan_template_hui .bg{background:url(/public/images/yhqmb/hui/bg.png?ppp) repeat-x}
+.youhuiquan_template_hui .type_icon{background:url(/public/images/yhqmb/hui/type_icon.png) 0px 20px no-repeat}
+.youhuiquan_template_hui .detail_bg{background:url(/public/images/yhqmb/hui/detail_bg.png?ppp) repeat-x}
+.youhuiquan_template_hui .yhq_fenxi_{ color: #ff9a22  }
+
+
+.youhuiquan_template_zhe{}
+.youhuiquan_template_zhe .left{background:url(/public/images/yhqmb/zhe/left.png)}
+.youhuiquan_template_zhe .right{background:url(/public/images/yhqmb/zhe/right.png)}
+.youhuiquan_template_zhe .bg{background:url(/public/images/yhqmb/zhe/bg.png?ppp) repeat-x}
+.youhuiquan_template_zhe .type_icon{background:url(/public/images/yhqmb/zhe/type_icon.png) 0px 20px no-repeat}
+.youhuiquan_template_zhe .detail_bg{background:url(/public/images/yhqmb/zhe/detail_bg.png?ppp) repeat-x}
+.youhuiquan_template_zhe .yhq_fenxi_{ color: #57bd49
+}
+
+.youhuiquan_template_song{}
+.youhuiquan_template_song .left{background:url(/public/images/yhqmb/song/left.png)}
+.youhuiquan_template_song .right{background:url(/public/images/yhqmb/song/right.png?dsfsdf)}
+.youhuiquan_template_song .bg{background:url(/public/images/yhqmb/song/bg.png?ppp) repeat-x}
+.youhuiquan_template_song .type_icon{background:url(/public/images/yhqmb/song/type_icon.png?dfs) 0px 20px no-repeat}
+.youhuiquan_template_song .detail_bg{background:url(/public/images/yhqmb/song/detail_bg.png?ppp) repeat-x}
+.youhuiquan_template_song .yhq_fenxi_{ color: #9259cb
+}
+
+.youhuiquan_template_jing{}
+.youhuiquan_template_jing .left{background:url(/public/images/yhqmb/jin/left.png)}
+.youhuiquan_template_jing .right{background:url(/public/images/yhqmb/jin/right.png)}
+.youhuiquan_template_jing .bg{background:url(/public/images/yhqmb/jin/bg.png?ppp) repeat-x}
+.youhuiquan_template_jing .type_icon{background:url(/public/images/yhqmb/jin/type_icon.png) 0px 20px no-repeat}
+.youhuiquan_template_jing .detail_bg{background:url(/public/images/yhqmb/jin/detail_bg.png?ppp) repeat-x}
+.youhuiquan_template_jing .yhq_fenxi_{ color: #ff5768
+}
+
+.shiyonxuzhi{padding: 5px 10px 10px 10px; font-size: 14px; }
+.yhq_fenxi{font-size: 14px;}
+.yhq_operation{color:#204d74;border-left: 3px solid #fff; width: 100px; text-align: center; float: right; }
+.page_bt_menu_inner_box{font-size: 14px;
+  line-height: 16px; text-align: center; background: #6d6d6d; padding-top: 5px;}
+.page_bt_menu_inner_box a{color: #00b7ff;}
+.page_bt_menu_out_box{position:fixed; background: #6d6d6d; bottom:0px; width:100%; padding-top: 5px; height: 48px;}

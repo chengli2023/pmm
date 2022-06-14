@@ -1,0 +1,35 @@
+<%
+var gzh = req.param('gzh')%>
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel='stylesheet' href='/public/bower_components/bootstrap/dist/css/bootstrap.min.css'/>
+    <link rel='stylesheet' href='/public/stylesheets/style.css'/>
+    <title>核销卡券</title>
+
+</head>
+<body>
+<div class="container-fluid" style="">
+    <div class="row">
+
+        <div class="col-xs-12" style="">
+            <form method="post" name="hexiaoForm" id="hexiaoForm">
+                <div class="form-group">
+                    <label for="quanBianhao">客户优惠券编号</label>
+                    <input type="text" class="form-control" id="quanBianhao" name="quanBianhao" value="<%=quanBianhao%>" placeholder="客户优惠券编号">
+
+                </div>
+                <button type="submit" class=" btn btn-primary" style=" float:right;">确认核销优惠券</button>
+
+            </form>
+        </div>
+
+    </div>
+</div>
+
+<% include ./include/scripts.html %>
+<script>iae.common.form('hexiaoForm').validate();</script>
+</body>
+</html>

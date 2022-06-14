@@ -1,0 +1,68 @@
+<%
+var gzh = req.param('gzh')
+var dianpuid = req.myProfile.dianpuid
+%>
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel='stylesheet' href='/public/bower_components/bootstrap/dist/css/bootstrap.min.css'/>
+    <link rel='stylesheet' href='/public/stylesheets/style.css'/>
+    <title></title>
+
+</head>
+<body>
+<div class="container-fluid" style="">
+    <div class="row">
+        <div class="col-xs-12">
+            <form method="post" name="createyouhuiquanForm" id="createyouhuiquanForm">
+                <input type="hidden" id="dianpuid_fk" name="dianpuid_fk" value="<%=dianpuid%>">
+                <div class="form-group">
+                    <label for="title">优惠券标题</label>
+                    <input type="text" class="form-control" id="title" name="title" placeholder="优惠券标题">
+                </div>
+                <div class="form-group">
+                    <label for="content">优惠券内容</label>
+                    <textarea class="form-control" rows="4" id="content" name="content" placeholder="优惠券内容"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="content">使用期限(例:20150501)</label>
+                    <input type="text" class="form-control" id="starttime_ymd_str" name="starttime_ymd_str" placeholder="开始时间">
+
+                    <input type="text" class="form-control" id="endtime_ymd_str" name="endtime_ymd_str" placeholder="结束时间">
+                </div>
+                <div class="form-group" style="font-size: 14px;">
+                    <div style="font-weight: bolder; margin-bottom: 3px; font-size: 16px;">类型</div>
+                    <label class="radio-inline">
+                        <input type="radio" name="type" id="inlineRadio1" value="hui"> 优惠券
+                    </label>
+                    <label class="radio-inline">
+                        <input type="radio" name="type" id="inlineRadio2" value="zhe"> 折扣券
+                    </label>
+                    <label class="radio-inline">
+                        <input type="radio" name="type" id="inlineRadio3" value="song"> 送品券
+                    </label>
+                    <label class="radio-inline">
+                        <input type="radio" name="type" id="inlineRadio4" value="jing"> 代金券
+                    </label>
+                </div>
+                <div class="form-group ">
+                    <label>
+                        <input type="checkbox" name="isnewuser" id="isnewuser"> 关注即送
+                    </label>
+                </div>
+                <div style="text-align: right">
+                    <a href="/boss?gzh=<%=gzh%>"><button type="button" class="btn btn-primary" style="">返回</button></a>
+                    <button type="submit" class="btn btn-primary" style=" ">创建优惠券</button>
+                </div>
+                <span class="res_error"></span>
+            </form>
+        </div>
+    </div>
+</div>
+
+<% include ./include/scripts.html %>
+<script>iae.common.form('createyouhuiquanForm').validate();</script>
+</body>
+</html>

@@ -1,0 +1,68 @@
+
+<%
+var gzh = req.param('gzh')%>
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel='stylesheet' href='/public/bower_components/bootstrap/dist/css/bootstrap.min.css'/>
+    <link rel='stylesheet' href='/public/stylesheets/style.css'/>
+    <title></title>
+
+</head>
+<body>
+<div class="container-fluid" style="">
+    <div class="row">
+        <div class="col-xs-12">
+            <form method="post" name="edityouhuiquanForm" id="edityouhuiquanForm">
+                <input type="hidden" id="dianpuid" name="dianpuid" value="<%=gzh%>">
+                <input type="hidden" id="youhuiquanid" name="youhuiquanid" value="<%=req.param('youhuiquanid')%>">
+                <div class="form-group">
+                    <label for="title">优惠券标题</label>
+                    <input type="text" class="form-control" id="title" name="title" placeholder="优惠券标题" value="<%=youhuiquan.title%>">
+                </div>
+                <div class="form-group">
+                    <label for="content">优惠券内容</label>
+                    <textarea class="form-control" rows="4" id="content" name="content" placeholder="优惠券内容"><%=youhuiquan.content%></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="content">使用期限(例:20150501)</label>
+                    <input type="text" class="form-control" id="starttime_ymd_str" name="starttime_ymd_str" placeholder="开始时间" value="<%=youhuiquan.starttime_ymd_str%>">
+
+                    <input type="text" class="form-control" id="endtime_ymd_str" name="endtime_ymd_str" placeholder="结束时间" value="<%=youhuiquan.endtime_ymd_str%>">
+                </div>
+                <div class="form-group" style="font-size: 14px;">
+                    <%var checked = 'checked'%>
+                    <div style="font-weight: bolder; margin-bottom: 3px; font-size: 16px;">类型</div>
+                    <label class="radio-inline">
+                        <input type="radio" name="type"  id="inlineRadio1" value="hui" <%=(youhuiquan.type=='hui'?checked:'')%>> 优惠券
+                    </label>
+                    <label class="radio-inline">
+                        <input type="radio" name="type" id="inlineRadio2" value="zhe" <%=(youhuiquan.type=='zhe'?checked:'')%>> 折扣券
+                    </label>
+                    <label class="radio-inline">
+                        <input type="radio" name="type" id="inlineRadio3" value="song" <%=(youhuiquan.type=='song'?checked:'')%>> 送品券
+                    </label>
+                    <label class="radio-inline">
+                        <input type="radio" name="type" id="inlineRadio4" value="jing" <%=(youhuiquan.type=='jing'?checked:'')%>> 代金券
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" name="isnewuser" id="isnewuser" <%if(youhuiquan.isnewuser){%>checked<%}%>> 关注即送
+                    </label>
+                </div>
+                <a href="/boss?gzh=<%=gzh%>"><button type="button" class="btn btn-primary" style="">返回</button></a>
+                <button type="submit" class="btn btn-primary" style=" float:right;">保存优惠券</button>
+                <span class="res_error"></span>
+            </form>
+        </div>
+    </div>
+</div>
+
+<% include ./include/scripts.html %>
+<script>
+    iae.common.form('edityouhuiquanForm').validate();</script>
+</body>
+</html>

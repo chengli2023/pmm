@@ -1,0 +1,130 @@
+<%
+var gzh = req.param('gzh')
+%>
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel='stylesheet' href='/public/bower_components/bootstrap/dist/css/bootstrap.min.css'/>
+    <link rel='stylesheet' href='/public/stylesheets/style.css'/>
+    <title>卡券管理系统-赠送页</title>
+
+</head>
+<body>
+<div class="container-fluid" style="">
+    <div class="row">
+        <%
+        %>
+
+        <div class="col-xs-12" style="word-wrap: break-word; margin-top: 8px;">
+            <div class="youhuiquan youhuiquan_template_<%=youhuiquan.type%>" onclick="javascript:alertModal()">
+                <div class="youhuiquan_left left"></div>
+                <div class="youhuiquan_right right"></div>
+                <div style="margin: 0px 7px;">
+                    <div class="youhuiquan_bg bg ">
+
+                        <div class="youhuiquan_title_bar">
+                            <!--<div class="youhuiquan_type_icon type_icon"></div>-->
+                            <div class="youhuiquan_title"><%=youhuiquan.title%></div>
+                        </div>
+                        <div class="youhuiquan_foot">
+                            有效期至:<%=youhuiquan.endtime_ymd_str%>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12" style="margin-top: 13px;padding: 0 13px;">
+            <form action="?" method="post" name="zengsongForm" id="zengsongForm">
+                <input type="hidden" id="youhuiquanid" name="youhuiquanid" value="<%=req.param('youhuiquanid')%>">
+
+                <div class="form-group">
+                    <label for="phone">客户手机号码 <span style="font-size: 14px; color: #3f7cbb;">不输则赠送给所有客户</span></label>
+                    <input type="text" style="width: 250px;" class="form-control" id="phone" name="phone"
+                           placeholder="手机号码">
+
+                </div>
+                <div class="form-group checkbox">
+                    <label>
+                        <input type="checkbox" name="notify_sms" id="notify_sms"> <span style="font-weight: bolder">使用短信通知 <span
+                            style="font-size: 14px;font-weight: normal">(剩余<font color="red">10</font>条短信)</span></span>
+                        <br><span style="color: #3f7cbb; font-size: 14px;">共有5位客户将收到短信</span>
+                    </label>
+                </div>
+                <div class="form-group checkbox">
+                    <label>
+                        <!--<input type="checkbox" disabled name="notify_weixin" id="notify_weixin"> <span style="">您尚未开通微信通知功能</span>-->
+                        <input type="checkbox" name="notify_weixin" id="notify_weixin"> <span
+                            style="font-weight: bolder">使用微信通知 <span
+                            style="font-size: 14px;font-weight: normal">(剩余<font color="red">2</font>次)</span></span>
+                        <br><span style="color: #3f7cbb; font-size: 14px;">共有10位客户将收到通知</span>
+                    </label>
+                </div>
+                <!--<div class="form-group checkbox">
+                    <label>
+                        <input type="checkbox" disabled name="notify_area" id="notify_area"> <span style="">您尚未开通地理范围广播功能</span>
+
+                    </label>
+                </div>-->
+                <!--<div style="padding:0 5px;background:rgba(255, 155, 33, 0.42);width: 100%; border: 1px dashed #ff9a22; border-radius: 5px; margin-top: 15px; ">-->
+                <div style="padding:0 5px;width: 100%; border: 1px dashed #ff9a22; border-radius: 5px; margin-top: 15px; ">
+                    <label>
+                        <input type="checkbox" name="accept" id="accept">
+                        <span style="font-weight: normal">同意(本券赠送后不能修改、删除)</span>
+                    </label><br>
+                    <span style="font-size: 14px;">可以联系公众号运营商为您开通特权服务</span>
+                </div>
+                <div style="margin-bottom: 15px;"><label id="accept-error" class="formErrorMessage"
+                                                         for="accept"></label></div>
+
+                <div style="text-align: right">
+                    <a href="/boss?gzh=<%=gzh%>">
+                        <button type="button" class="btn btn-primary" style="">返回</button>
+                    </a>
+                    <button type="button" class=" btn btn-primary" style="" onclick="zengsongDialogModal()">赠送</button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+</div>
+<div class="modal fade" id="zengsongDialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">赠送优惠券</h4>
+            </div>
+            <div class="modal-body">
+                <p>确定要赠送吗？</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal" id="zengsongdialogCancel">取消</button>
+                <button type="button" class="btn btn-primary" onclick="submitForm();">确定</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<% include ./include/scripts.html %>
+<script>
+    function zengsongDialogModal() {
+        if ($("#zengsongForm").valid()) {
+            $("#zengsongDialog").modal();
+        }
+
+    }
+    function submitForm() {
+        $("#zengsongForm").submit();
+        $("#zengsongdialogCancel").click();
+    }
+    var zengsongFormValidator = iae.common.form('zengsongForm').validate();
+</script>
+</body>
+</html>

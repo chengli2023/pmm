@@ -1,0 +1,170 @@
+<%
+var userCount = result.userCount
+var youhuiquan_arr = result.youhuiquan_arr
+var gzh = req.myProfile.gzh
+%>
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel='stylesheet' href='/public/bower_components/bootstrap/dist/css/bootstrap.min.css'/>
+    <link rel='stylesheet' href='/public/stylesheets/style.css'/>
+    <title>卡券管理系统-首页</title>
+
+</head>
+<body>
+<div style="position:fixed;height: 35px; text-align: right;
+ top:0px;border-bottom: 0px solid #878dff; z-index:9999; background:#ffffff; width:100%;
+  padding-top:3px; padding-right:18px;
+  font-size: 14px;">
+    共<span style="font-size: 22px; font-weight: bolder; color: #23527c; font-family: 'Arial'">5</span>人关注&nbsp;&nbsp;&nbsp;&nbsp;
+    其中<span style="font-size: 22px; font-weight: bolder; color: #23527c; font-family: 'Arial'"><%=userCount%></span>人曾使用过优惠券
+
+</div>
+<div style="margin-top:35px;"></div>
+<div class="container-fluid">
+
+    <%for(var i = 0; i < youhuiquan_arr.length; i ++){
+    var youhuiquan = youhuiquan_arr[i]
+    %>
+    <div class="row">
+        <div class="col-xs-12" style="margin-top: 0px;word-wrap: break-word; ">
+            <!--<div style="background: url('/public/images/yhqmb/1.png') no-repeat center; width:336px; margin: auto; height: 123px;">
+                <div style="height: 97px;">
+                    <div  style="padding-left:20px;padding-right:20px; font-family: 'Arial'; font-weight: bolder;
+                         line-height:42px;word-wrap:break-word; word-break: normal;
+                         color:#fff;vertical-align:middle;font-size: 32px; text-align: left; ">
+                        <table>
+                            <tr>
+                                <td style="vertical-align:middle;height:100px;overflow: hidden">
+                                    <%=youhuiquan.title%>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div  style="height:30px; color: #6c6c6c; text-align: left; padding-left: 18px;">
+                    <div style="float:left;">有效期至:<%=youhuiquan.endtime_ymd_str%></div>
+                    <div style="float:right;  height: 30px; width: 100px;" onclick="javascript:window.location.href='/youhuiquan_detail_boss?gzh=<%=gzh%>&youhuiquanid=<%=youhuiquan.id%>'">
+                    </div>
+
+                </div>
+            </div>-->
+            <div class="youhuiquan youhuiquan_template_<%=youhuiquan.type%>"
+                 onclick="javascript:window.location.href='/youhuiquan_detail_boss?gzh=<%=gzh%>&youhuiquanid=<%=youhuiquan.id%>'">
+                <div class="youhuiquan_left left"></div>
+                <div class="youhuiquan_right right"></div>
+                <div style="margin: 0px 7px;">
+                    <div class="youhuiquan_bg bg ">
+
+                        <div class="youhuiquan_title_bar">
+                            <div class="youhuiquan_type_icon type_icon"></div>
+                            <div class="youhuiquan_title"><%=youhuiquan.title%></div>
+                        </div>
+                        <div class="youhuiquan_foot">
+                            有效期至:<%=youhuiquan.endtime_ymd_str%>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div style=" margin: 5px auto; width: 96%;">
+                <div style="float:left; margin-top: -2px; margin-right: 5px;">
+                    <span class="label" style="padding: 3px; color: #949494"><%=youhuiquan.chiyouliang%> 人持有</span>
+                    <%if(youhuiquan.chiyouliang > 0){%>
+                    <span class="label" style="padding: 3px;color: #949494"><%=youhuiquan.views%> 次浏览</span>
+                    <span class="label" style="padding: 3px;color: #949494">已核销 <%=youhuiquan.hexiaoci%> 次</span>
+                    <%}%>
+                </div>
+                <div style="float:right;">
+                    <%if(youhuiquan.chiyouliang < 1){%>
+                    <a href="/edityouhuiquan?gzh=<%=gzh%>&youhuiquanid=<%=youhuiquan.id%>">
+                        <button type="button" class="btn btn-default" style="">修改</button>
+                    </a>
+                    <a href="javascript:deleteDialogModal('/deleteyhq?gzh=<%=gzh%>&youhuiquanid=<%=youhuiquan.id%>')">
+                        <button type="button" class="btn btn-default" style="">删除</button>
+                    </a>
+                    <%}%>
+                    <a href="/zengsong?gzh=<%=gzh%>&youhuiquanid=<%=youhuiquan.id%>">
+                        <button type="button" class="btn btn-default" style="">赠送</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <%}%>
+</div>
+<div style="height:48px;"></div>
+<div class="page_bt_menu_out_box">
+    <div class="page_bt_menu_inner_box">
+        <a href="/createyouhuiquan?gzh=<%=gzh%>">
+            <div style="float: left;width:25%; ">
+                <span class="glyphicon glyphicon-paperclip"></span><br>
+                创建
+            </div>
+        </a>
+        <a href="/hexiao?gzh=<%=gzh%>">
+            <div style="float: left;width:25%;">
+                <span class="glyphicon glyphicon-scissors"></span><br>
+                核销
+            </div>
+        </a>
+        <a href="/setup?gzh=<%=gzh%>">
+            <div style="float: left; width:25%; ">
+                <span class="glyphicon glyphicon-cog"></span><br>
+                设置
+            </div>
+        </a>
+        <a href="javascript:goHomePage('<%=gzh%>')">
+            <div style="float: left;width:25%;">
+                <span class="glyphicon glyphicon-repeat"></span><br>
+                刷新
+            </div>
+        </a></div>
+</div>
+<script>
+
+</script>
+
+<!--<span class="glyphicon glyphicon-unchecked" style="color: #fff">-->
+<div class="modal fade" id="deleteDialog" style="z-index:10000">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">删除优惠券</h4>
+            </div>
+            <div class="modal-body">
+                <p>确定要删除吗？</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-primary" onclick="deleteYouhuiquan()">确定</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+</body>
+<% include ./include/scripts.html %>
+<script>
+    var prepareDeleteYouhuiquan = '';
+    $('#deleteDialog').on('hidden.bs.modal', function (e) {
+        prepareDeleteYouhuiquan = '';
+    })
+    function deleteYouhuiquan() {
+        window.location.href = prepareDeleteYouhuiquan;
+    }
+    function deleteDialogModal(url) {
+        prepareDeleteYouhuiquan = url;
+        $("#deleteDialog").modal()
+    }
+    var errors = "<%=req.param('errors')%>";
+    var success = "<%=req.param('success')%>";
+    if (errors) iae.common.dialog.tips(false, errors);
+    if (success) iae.common.dialog.tips(false, success);
+
+</script>
+</html>
